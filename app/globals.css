@@ -6,4 +6,5 @@ main{max-width:42rem;margin:0 auto;padding:3rem 1.25rem}
 h1{font-size:2rem;margin:0 0 .25rem}h2{margin-top:2rem}
 .muted{color:var(--muted)}a{color:var(--accent)}
 .card{border:1px solid var(--muted);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0}
+.card h2{margin-top:0}
 footer{margin-top:3rem;font-size:.9rem;color:var(--muted)}

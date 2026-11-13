@@ -1,7 +1,9 @@
 # plundergames-site
 
-Plain static site for the Plunder Games studio (GitHub Pages, custom domain `plundergames.de`). No build step: edit the HTML, push to `main`.
+Studio site for Plunder Games (`plundergames.de`): Next.js 16, static export, deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`.
 
-- `/` studio page with the game list (Lootbeard is one entry), `/lootbeard/privacy/`, `/impressum/` are placeholders until the texts exist.
-- **Open:** real privacy policy + Impressum (needs name, address, contact e-mail from the owner); `app-ads.txt` in the root (lines from the LevelPlay dashboard for ironSource Ads + Unity Ads, **not** the Unity lines of the old Paladin's Story site); images/screenshots at release.
-- DNS (netcup): `plundergames.de` A records → GitHub Pages IPs, `www` CNAME → `plundergames.github.io`. Then switch on "Enforce HTTPS" in the repo's Pages settings.
+- `npm install` · `npm run dev` (local) · `npm run check` (types) · `npm run build` (writes `./out`)
+- **Add a game:** one entry in `lib/site.ts` (`GAMES`) gives it `/games/<slug>/` and `/games/<slug>/privacy/` plus sitemap + footer links. Replace the placeholder text in `app/games/[slug]/privacy/page.tsx` (or add per-game content) when the real policy exists.
+- `public/CNAME` (custom domain) and `public/.nojekyll` must stay; `public/app-ads.txt` goes in the root of the site.
+- **Open:** real privacy policy + Impressum (name, address, contact e-mail from the owner); `app-ads.txt` (ironSource Ads + Unity Ads lines from the LevelPlay dashboard); images at release.
+- DNS (netcup): `plundergames.de` A records → 185.199.108.153 / .109.153 / .110.153 / .111.153, `www` CNAME → `plundergames.github.io`; then "Enforce HTTPS" in Settings → Pages.
