@@ -20,4 +20,10 @@ export const GAMES: Game[] = [
     blurb: "Piraten-Merge-RPG: Items zusammenführen, die Crew aufrüsten, Bosse besiegen.",
     status: "soon",
   },
+  {
+    slug: "grim-swordsman",
+    name: "Grim Swordsman",
+    blurb: "Düsteres Schwertduell-RPG mit Humor: Monster und Untote im Eins-gegen-eins besiegen, offline spielbar.",
+    status: "soon",
+  },
 ];
