@@ -18,22 +18,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <footer>
             <Link href="/">{SITE.name}</Link>
-            {gamesWith("privacy.de").map((g) => (
+            {gamesWith("privacy").map((g) => (
               <span key={g.slug}>
                 {" · "}
-                <Link href={`/${g.slug}/datenschutz/`}>Datenschutz {g.name}</Link>
+                <Link href={`/${g.slug}/privacy/`}>Privacy ({g.name})</Link>
                 {" · "}
-                <Link href={`/${g.slug}/nutzungsbedingungen/`}>Nutzungsbedingungen {g.name}</Link>
-                {" · "}
-                <span lang="en">
-                  <Link href={`/${g.slug}/privacy/`}>Privacy</Link>
-                  {" / "}
-                  <Link href={`/${g.slug}/terms/`}>Terms</Link>
-                </span>
+                <Link href={`/${g.slug}/terms/`}>Terms ({g.name})</Link>
               </span>
             ))}
             {" · "}
-            <Link href="/impressum/">Impressum</Link>
+            <Link href="/imprint/">Imprint</Link>
           </footer>
         </main>
       </body>

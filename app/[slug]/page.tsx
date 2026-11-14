@@ -27,15 +27,11 @@ export default async function GamePage({ params }: Props) {
       ) : (
         <p className="muted">Erscheint bald.</p>
       )}
-      {hasDoc(game.slug, "privacy.de") && (
+      {hasDoc(game.slug, "privacy") && (
         <p>
-          <Link href={`/${game.slug}/datenschutz/`}>Datenschutzerklärung</Link>
+          <Link href={`/${game.slug}/privacy/`}>Privacy policy</Link>
           {" · "}
-          <Link href={`/${game.slug}/nutzungsbedingungen/`}>Nutzungsbedingungen</Link>
-          {" · "}
-          <Link href={`/${game.slug}/privacy/`}>Privacy</Link>
-          {" / "}
-          <Link href={`/${game.slug}/terms/`}>Terms</Link>
+          <Link href={`/${game.slug}/terms/`}>Terms of Service</Link>
         </p>
       )}
     </>

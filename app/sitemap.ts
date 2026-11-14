@@ -4,6 +4,12 @@ import { GAMES, SITE } from "@/lib/site";
 
 export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["/", "/impressum/", ...GAMES.map((g) => `/${g.slug}/`), ...(["privacy.en", "privacy.de", "terms.en", "terms.de"] as const).flatMap((d) => gamesWith(d).map((g) => `/${g.slug}/${{ "privacy.en": "privacy", "privacy.de": "datenschutz", "terms.en": "terms", "terms.de": "nutzungsbedingungen" }[d]}/`))];
+  const paths = [
+    "/",
+    "/imprint/",
+    ...GAMES.map((g) => `/${g.slug}/`),
+    ...gamesWith("privacy").map((g) => `/${g.slug}/privacy/`),
+    ...gamesWith("terms").map((g) => `/${g.slug}/terms/`),
+  ];
   return paths.map((p) => ({ url: `${SITE.url}${p}` }));
 }

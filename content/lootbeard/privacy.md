@@ -1,6 +1,6 @@
 # Privacy Policy for Lootbeard
 
-Last updated: 14 November 2026 · [Deutsche Fassung](https://plundergames.de/lootbeard/datenschutz)
+Last updated: 14 November 2026
 
 This policy explains what data the mobile game **Lootbeard** (Android, later iOS) processes, why, and what your rights are. In short: we run **no servers of our own**. Your progress is stored on your device and, if you like, in your Google (later Apple) account. Data only goes to the providers named below: for reward videos that you start yourself, for purchases, for the cloud save and, only if you switch them on, for play statistics.
 

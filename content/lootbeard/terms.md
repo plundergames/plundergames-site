@@ -1,8 +1,6 @@
 # Terms of Service for Lootbeard
 
-Last updated: 14 November 2026 · [Deutsche Fassung](https://plundergames.de/lootbeard/nutzungsbedingungen)
-
-This is a translation. If the two versions differ, the German version applies, as far as the law allows.
+Last updated: 14 November 2026
 
 ## 1. Scope and who you contract with
 
