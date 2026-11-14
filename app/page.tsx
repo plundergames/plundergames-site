@@ -9,7 +9,7 @@ export default function Home() {
       {GAMES.map((g) => (
         <div className="card" key={g.slug}>
           <h2>
-            <Link href={`/games/${g.slug}/`}>{g.name}</Link>
+            <Link href={`/${g.slug}/`}>{g.name}</Link>
           </h2>
           <p>{g.blurb}</p>
           <p className="muted">{g.status === "soon" ? "Erscheint bald." : "Jetzt im Store."}</p>

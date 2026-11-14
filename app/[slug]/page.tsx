@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { hasPolicy } from "@/lib/legal";
 import { GAMES } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -10,8 +11,7 @@ export const generateStaticParams = () => GAMES.map((g) => ({ slug: g.slug }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const game = GAMES.find((g) => g.slug === slug);
-  return { title: game?.name };
+  return { title: GAMES.find((g) => g.slug === slug)?.name };
 }
 
 export default async function GamePage({ params }: Props) {
@@ -27,7 +27,13 @@ export default async function GamePage({ params }: Props) {
       ) : (
         <p className="muted">Erscheint bald.</p>
       )}
-      <p><Link href={`/games/${game.slug}/privacy/`}>Datenschutzerklärung</Link></p>
+      {hasPolicy(game.slug) && (
+        <p>
+          <Link href={`/${game.slug}/datenschutz/`}>Datenschutzerklärung</Link>
+          {" · "}
+          <Link href={`/${game.slug}/privacy/`}>Privacy policy (English)</Link>
+        </p>
+      )}
     </>
   );
 }
