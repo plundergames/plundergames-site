@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { policyGames } from "@/lib/legal";
+import { gamesWith } from "@/lib/legal";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,10 +18,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <footer>
             <Link href="/">{SITE.name}</Link>
-            {policyGames().map((g) => (
+            {gamesWith("privacy.de").map((g) => (
               <span key={g.slug}>
                 {" · "}
                 <Link href={`/${g.slug}/datenschutz/`}>Datenschutz {g.name}</Link>
+                {" · "}
+                <Link href={`/${g.slug}/nutzungsbedingungen/`}>Nutzungsbedingungen {g.name}</Link>
+                {" · "}
+                <span lang="en">
+                  <Link href={`/${g.slug}/privacy/`}>Privacy</Link>
+                  {" / "}
+                  <Link href={`/${g.slug}/terms/`}>Terms</Link>
+                </span>
               </span>
             ))}
             {" · "}

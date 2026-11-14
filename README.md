@@ -9,6 +9,6 @@ Studio site for Plunder Games (`plundergames.de`): Next.js 16, static export, de
 - DNS (netcup): `plundergames.de` A records → 185.199.108.153 / .109.153 / .110.153 / .111.153, `www` CNAME → `plundergames.github.io`; then "Enforce HTTPS" in Settings → Pages.
 
 ## Legal texts
-- `content/<slug>/privacy.{en,de}.md` are copies of the game repo's `Docs/Legal/privacy-policy.{en,de}.md` (source of truth there) with `{{DATE}}` filled in; a game gets `/<slug>/privacy/` + `/<slug>/datenschutz/` only when these files exist. Rendered at build time with `marked`.
+- `content/<slug>/{privacy,terms}.{en,de}.md` are copies of the game repo's `Docs/Legal/{privacy-policy,terms}.{en,de}.md` (source of truth there) with `{{DATE}}` filled in; a game gets `/<slug>/privacy/`, `/datenschutz/`, `/terms/`, `/nutzungsbedingungen/` only for the files that exist. Rendered at build time with `marked`.
 - `/impressum/` is still a placeholder until `{{PHONE}}` / `{{VAT_ID}}` are settled (`Docs/Legal/impressum.de.md`, `imprint.en.md`).
 - `content/drafts/website-datenschutz.de.md` = draft of the site's own privacy note (hosting logs); **not routed**, items marked `[PRÜFEN]`.

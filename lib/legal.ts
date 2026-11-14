@@ -3,12 +3,13 @@ import path from "node:path";
 import { marked } from "marked";
 import { GAMES } from "./site";
 
-// content/<slug>/privacy.{en,de}.md is copied from the game repo (Docs/Legal) with the date filled in.
-// A game without these files gets no privacy pages yet.
-const file = (slug: string, name: string) => path.join(process.cwd(), "content", slug, `${name}.md`);
-export const hasPolicy = (slug: string) => existsSync(file(slug, "privacy.en"));
-export const policyGames = () => GAMES.filter((g) => hasPolicy(g.slug));
+// content/<slug>/<doc>.md is copied from the game repo (Docs/Legal) with the date filled in.
+// A game without the files gets no pages for that document yet.
+export type Doc = "privacy.en" | "privacy.de" | "terms.en" | "terms.de";
+const file = (slug: string, doc: Doc) => path.join(process.cwd(), "content", slug, `${doc}.md`);
+export const hasDoc = (slug: string, doc: Doc) => existsSync(file(slug, doc));
+export const gamesWith = (doc: Doc) => GAMES.filter((g) => hasDoc(g.slug, doc));
 
-export function legalHtml(slug: string, name: "privacy.en" | "privacy.de"): string {
-  return marked.parse(readFileSync(file(slug, name), "utf8"), { async: false });
+export function legalHtml(slug: string, doc: Doc): string {
+  return marked.parse(readFileSync(file(slug, doc), "utf8"), { async: false });
 }

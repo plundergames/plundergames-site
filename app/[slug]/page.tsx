@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { hasPolicy } from "@/lib/legal";
+import { hasDoc } from "@/lib/legal";
 import { GAMES } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -27,11 +27,15 @@ export default async function GamePage({ params }: Props) {
       ) : (
         <p className="muted">Erscheint bald.</p>
       )}
-      {hasPolicy(game.slug) && (
+      {hasDoc(game.slug, "privacy.de") && (
         <p>
           <Link href={`/${game.slug}/datenschutz/`}>Datenschutzerklärung</Link>
           {" · "}
-          <Link href={`/${game.slug}/privacy/`}>Privacy policy (English)</Link>
+          <Link href={`/${game.slug}/nutzungsbedingungen/`}>Nutzungsbedingungen</Link>
+          {" · "}
+          <Link href={`/${game.slug}/privacy/`}>Privacy</Link>
+          {" / "}
+          <Link href={`/${game.slug}/terms/`}>Terms</Link>
         </p>
       )}
     </>
