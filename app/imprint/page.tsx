@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { marked } from "marked";
 
 export const metadata: Metadata = { title: "Imprint" };
 
-// Placeholder until the VAT ID / phone line are settled (source: Docs/Legal/imprint.en.md in the game repo).
+// content/imprint.md is a copy of Docs/Legal/imprint.en.md in the game repo (source of truth there).
 export default function Imprint() {
-  return (
-    <>
-      <h1>Imprint</h1>
-      <p>The details will be added before the first game is released.</p>
-    </>
-  );
+  const md = readFileSync(path.join(process.cwd(), "content", "imprint.md"), "utf8");
+  return <article dangerouslySetInnerHTML={{ __html: marked.parse(md, { async: false }) }} />;
 }
