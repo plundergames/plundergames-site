@@ -11,5 +11,5 @@ export const hasDoc = (slug: string, doc: Doc) => existsSync(file(slug, doc));
 export const gamesWith = (doc: Doc) => GAMES.filter((g) => hasDoc(g.slug, doc));
 
 export function legalHtml(slug: string, doc: Doc): string {
-  return marked.parse(readFileSync(file(slug, doc), "utf8"), { async: false });
+  return marked.parse(readFileSync(file(slug, doc), "utf8"), { async: false, breaks: true });
 }

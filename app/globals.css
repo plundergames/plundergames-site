@@ -1,11 +1,68 @@
-:root{--bg:#0e1a26;--fg:#e9eef3;--muted:#9fb0bf;--accent:#f2b44a}
-@media (prefers-color-scheme:light){:root{--bg:#f6f3ec;--fg:#1b2733;--muted:#5b6b78;--accent:#a8650c}}
+:root{--bg:#0E1132;--fg:#EDE9FF;--muted:#BDB6E8;--accent:#FFD9A0;--amber:#FFB24D}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:42rem;margin:0 auto;padding:3rem 1.25rem}
-h1{font-size:2rem;margin:0 0 .25rem}h2{margin-top:2rem}
-.muted{color:var(--muted)}a{color:var(--accent)}
-.card{border:1px solid var(--muted);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0}
-.card h2{margin-top:0}
-footer{margin-top:3rem;font-size:.9rem;color:var(--muted)}
-article{overflow-wrap:anywhere}article h1{font-size:1.8rem}article h2{font-size:1.3rem}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 var(--font-body),system-ui,sans-serif;font-weight:500}
+a{color:var(--accent)}a:hover{color:#fff}
+h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:800;color:#fff;margin:0}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* header + footer */
+.site-header{position:relative;z-index:3;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;max-width:1120px;margin:0 auto;padding:24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display),Georgia,serif;font-weight:800;font-size:26px;color:#fff}
+.nav{display:flex;gap:12px;font-weight:800}
+.nav a{text-decoration:none;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25)}
+.site-footer{border-top:1px solid rgba(255,255,255,.15);background:#080A24;margin-top:0}
+.site-footer .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:28px;padding-bottom:28px;font-weight:700;font-size:15px;color:var(--muted)}
+.site-footer nav{display:flex;flex-wrap:wrap;gap:20px}
+
+/* hero scene */
+.scene{position:relative;min-height:940px;overflow:hidden;background:
+radial-gradient(circle at 78% 22%, rgba(245,240,255,.98) 0 4.5%, rgba(205,190,255,.5) 5.5% 12%, rgba(140,110,220,0) 36%),
+linear-gradient(#171340 0%, #2E2766 42%, #5C4E9C 66%, #1B2050 66.1%, #0E1132 100%)}
+.shafts{position:absolute;inset:0;background:conic-gradient(from 195deg at 78% 22%, transparent 0 8deg, rgba(255,255,255,.07) 8deg 12deg, transparent 12deg 20deg, rgba(255,255,255,.05) 20deg 25deg, transparent 25deg 34deg, rgba(255,255,255,.06) 34deg 38deg, transparent 38deg)}
+.scene-svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:relative;z-index:3;padding-top:48px;padding-bottom:40px}
+.eyebrow{margin:0 0 14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:14px;color:var(--accent)}
+.hero-copy h1{max-width:12ch;font-size:clamp(46px,8vw,88px);line-height:1;text-shadow:0 4px 40px rgba(20,10,60,.7)}
+.hero-copy p.lead{margin:22px 0 28px;max-width:38ch;font-size:21px;line-height:1.5;font-weight:700;color:#DDD6FF}
+.btn{display:inline-block;padding:16px 34px;border-radius:16px;background:var(--amber);color:#2A1706;font-weight:800;font-size:19px;text-decoration:none;box-shadow:0 6px 0 #8A4F10,0 0 36px rgba(255,170,70,.55)}
+.btn:hover{color:#2A1706;filter:brightness(1.06)}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #8A4F10}
+.btn.small{padding:12px 24px;border-radius:14px;font-size:17px}
+
+/* game cards */
+.section{padding-top:72px;padding-bottom:88px}
+.section-head{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.section-head h2{font-size:40px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px}
+.card{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.2);min-height:500px;display:flex;flex-direction:column;justify-content:flex-end}
+.card.ship{background:radial-gradient(ellipse 50% 45% at 50% 75%, rgba(255,176,80,.85), transparent 70%),linear-gradient(#2A2262,#8A5A9A 70%,#3A2A6A)}
+.card.castle{background:radial-gradient(circle at 72% 26%, rgba(235,240,255,.95) 0 6%, rgba(150,170,255,.35) 7% 22%, transparent 40%),linear-gradient(#10163F,#1F2B66 62%,#0E1132)}
+.art-ship{position:absolute;left:0;right:0;top:40px;width:100%;height:280px}
+.art-castle{position:absolute;left:0;right:0;top:60px;width:100%;height:260px}
+.card .water{position:absolute;left:0;right:0;top:258px;bottom:0;background:repeating-linear-gradient(180deg, rgba(255,255,255,.07) 0 2px, transparent 2px 22px),linear-gradient(#3A3180,#1A1650 40%,#0E1132);border-top:3px solid rgba(255,224,170,.55)}
+.badge{position:absolute;top:18px;right:18px;border-radius:999px;padding:5px 14px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+.badge.warm{background:var(--amber);color:#2A1706}.badge.cool{background:#8FA2FF;color:#0E1132}
+.card-body{position:relative;padding:90px 28px 28px;background:linear-gradient(transparent, rgba(10,8,40,.94) 50%)}
+.card-body h3{font-size:40px;margin-bottom:8px}
+.card-body p{margin:0 0 18px;font-size:18px;line-height:1.5;font-weight:600;color:#E6E0FF}
+
+/* inner pages */
+.page-band{background:linear-gradient(#171340,#0E1132)}
+.page{padding-top:24px;padding-bottom:80px;max-width:760px}
+.page h1{font-size:clamp(34px,6vw,48px);margin-bottom:16px}
+article h1{font-size:clamp(30px,5vw,42px);margin-bottom:12px}
+article h2{font-size:26px;margin:36px 0 8px}
+article{overflow-wrap:anywhere}
+.linklist{padding-left:20px}
+
+/* motion */
+.ship-g{animation:bob 6s ease-in-out infinite}
+.beam{transform-origin:1122px 519px;animation:sweep 9s ease-in-out infinite}
+.flick{animation:flick 2.8s ease-in-out infinite}
+.star{animation:twinkle 4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@keyframes sweep{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+@keyframes flick{0%,100%{opacity:1}50%{opacity:.7}}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.ship-g,.beam,.flick,.star{animation:none}}

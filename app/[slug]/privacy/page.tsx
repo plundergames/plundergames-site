@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { PageShell } from "@/components/Header";
 import { gamesWith, legalHtml } from "@/lib/legal";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -16,5 +17,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   if (!gamesWith("privacy").some((g) => g.slug === slug)) notFound();
-  return <article dangerouslySetInnerHTML={{ __html: legalHtml(slug, "privacy") }} />;
+  return <PageShell><article dangerouslySetInnerHTML={{ __html: legalHtml(slug, "privacy") }} /></PageShell>;
 }

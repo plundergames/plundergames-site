@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PageShell } from "@/components/Header";
 import { hasDoc } from "@/lib/legal";
 import { GAMES } from "@/lib/site";
 
@@ -19,21 +20,17 @@ export default async function GamePage({ params }: Props) {
   const game = GAMES.find((g) => g.slug === slug);
   if (!game) notFound();
   return (
-    <>
+    <PageShell>
       <h1>{game.name}</h1>
       <p>{game.blurb}</p>
-      {game.storeUrl ? (
-        <p><a href={game.storeUrl}>Im Store ansehen</a></p>
-      ) : (
-        <p className="muted">Erscheint bald.</p>
-      )}
-      {hasDoc(game.slug, "privacy") && (
+      <p>{game.storeUrl ? <a href={game.storeUrl}>View in the store</a> : <strong>{game.badge}.</strong>}</p>
+      {(hasDoc(game.slug, "privacy") || hasDoc(game.slug, "terms")) && (
         <p>
-          <Link href={`/${game.slug}/privacy/`}>Privacy policy</Link>
-          {" · "}
-          <Link href={`/${game.slug}/terms/`}>Terms of Service</Link>
+          {hasDoc(game.slug, "privacy") && <Link href={`/${game.slug}/privacy/`}>Privacy policy</Link>}
+          {hasDoc(game.slug, "privacy") && hasDoc(game.slug, "terms") && " · "}
+          {hasDoc(game.slug, "terms") && <Link href={`/${game.slug}/terms/`}>Terms of Service</Link>}
         </p>
       )}
-    </>
+    </PageShell>
   );
 }

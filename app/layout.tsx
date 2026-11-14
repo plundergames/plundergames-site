@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { Fraunces, Nunito } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
-import { gamesWith } from "@/lib/legal";
 import { SITE } from "@/lib/site";
+
+// next/font downloads the fonts at build time and serves them from this domain (no request to Google by visitors).
+const display = Fraunces({ subsets: ["latin"], weight: ["800"], variable: "--font-display" });
+const body = Nunito({ subsets: ["latin"], weight: ["500", "700", "800"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -12,24 +16,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
-        <main>
-          {children}
-          <footer>
-            <Link href="/">{SITE.name}</Link>
-            {gamesWith("privacy").map((g) => (
-              <span key={g.slug}>
-                {" · "}
-                <Link href={`/${g.slug}/privacy/`}>Privacy ({g.name})</Link>
-                {" · "}
-                <Link href={`/${g.slug}/terms/`}>Terms ({g.name})</Link>
-              </span>
-            ))}
-            {" · "}
-            <Link href="/imprint/">Imprint</Link>
-          </footer>
-        </main>
+        {children}
+        <footer className="site-footer">
+          <div className="container">
+            <span>© 2026 Plunder Games · Stuttgart</span>
+            <nav aria-label="Legal">
+              <Link href="/legal/">Legal</Link>
+              <Link href="/imprint/">Imprint</Link>
+            </nav>
+          </div>
+        </footer>
       </body>
     </html>
   );
