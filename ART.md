@@ -29,7 +29,7 @@ The style image only sets the look; what is painted comes from the prompt.
 | `band.webp` | 4:1 harbor skyline from the water, mostly dark, for the inner-page header |
 | `card-lootbeard.webp` | 4:5 red-bearded pirate captain on the bow with a heap of loot; bottom third dark sea for text |
 | `card-grim-swordsman.webp` | 4:5 weary swordsman from behind facing a gothic castle, nervous skeleton with lantern behind a gravestone; bottom third dark |
-| `logo.png` | pirate skull with bandana and crossed cutlasses on a round cobalt badge with brass rim (also the favicon) |
+| `logo.webp` (+ `app/icon.png`) | pirate skull with bandana and crossed cutlasses on a round cobalt badge with brass rim (also the favicon) |
 | `flag.webp` | jolly-roger flag on a short pole (section icon) |
 | `btn-amber.webp` / `btn-blue.webp` | blank 4:1 pill buttons: amber-brass (primary) and cobalt enamel with brass rim (nav) |
 | `ribbon-warm.webp` / `ribbon-cool.webp` | blank swallowtail ribbons for card badges |
