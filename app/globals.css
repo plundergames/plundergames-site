@@ -44,23 +44,18 @@ h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:800;color:#ff
 .beam{left:91.9%;top:9.4%;width:55%;height:18%;translate:-100% -50%;transform-origin:100% 50%;background:linear-gradient(270deg,rgba(255,236,190,.6),rgba(255,236,190,0) 85%);clip-path:polygon(100% 45%,100% 55%,0 0,0 100%);mix-blend-mode:screen;animation:sweep 11s ease-in-out infinite}
 .lamp,.lantern{translate:-50% -50%;aspect-ratio:1;border-radius:50%;mix-blend-mode:screen;animation:flicker 2.6s ease-in-out infinite}
 .lamp{left:91.9%;top:9.4%;width:8%;background:radial-gradient(circle,rgba(255,224,160,.95),rgba(255,178,77,.35) 35%,transparent 70%)}
-.lantern{left:67.9%;top:36.2%;width:12%;background:radial-gradient(circle,rgba(120,255,225,.5),rgba(95,224,192,.15) 40%,transparent 70%);animation-duration:1.9s}
-/* the pirate is a 4-frame sprite sheet (frames aligned on the standing boot); frames 1-3 cross-fade over frame 0 as a ping-pong loop 0-1-2-3-2-1-0, smoother than hard steps */
-.pirate{left:63.9%;top:24.2%;width:23.5%;aspect-ratio:463/677}
-.pirate span{position:absolute;inset:0;background:url(/art/hero/pirate.webp) 0 0/400% 100% no-repeat;opacity:0}
-.pirate span:first-child{opacity:1}
-.pirate span:nth-child(2){background-position:33.333% 0;animation:f1 5s ease-in-out infinite}
-.pirate span:nth-child(3){background-position:66.667% 0;animation:f2 5s ease-in-out infinite}
-.pirate span:nth-child(4){background-position:100% 0;animation:f3 5s ease-in-out infinite}
+.lantern{left:68.8%;top:39%;width:12%;background:radial-gradient(circle,rgba(120,255,225,.5),rgba(95,224,192,.15) 40%,transparent 70%);animation:flicker 1.9s ease-in-out infinite,lantern 2.88s linear infinite}
+/* the pirate is the owner's 16-frame GIF (180 ms per frame) as a sprite sheet, placed so the standing boot sits on the bollard */
+.pirate{left:58.02%;top:23.58%;width:36.23%;aspect-ratio:315/311;background:url(/art/hero/pirate.webp) 0 0/1600% 100% no-repeat;animation:idle 2.88s steps(16) infinite}
 @keyframes scroll{to{translate:-25% 0}}
 @keyframes twinkle{50%{opacity:.35}}
 @keyframes glow{50%{opacity:.65;scale:.92}}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(1.5%) rotate(1.2deg)}}
 @keyframes sweep{0%,100%{transform:rotate(-12deg);opacity:.45}50%{transform:rotate(14deg);opacity:1}}
 @keyframes flicker{0%,100%{opacity:1}20%{opacity:.8}45%{opacity:.95}70%{opacity:.72}}
-@keyframes f1{0%,100%{opacity:0}16.7%,83.3%{opacity:1}}
-@keyframes f2{0%,16.7%,83.3%,100%{opacity:0}33.3%,66.7%{opacity:1}}
-@keyframes f3{0%,33.3%,66.7%,100%{opacity:0}50%{opacity:1}}
+@keyframes idle{to{background-position:106.667% 0}}
+/* the lantern glow follows the lantern (centroid of its teal glass per GIF frame) */
+@keyframes lantern{0%,100%{top:39.01%}6.25%{top:39.71%}12.5%{top:40.98%}18.75%{top:43.23%}25%{top:42.37%}31.25%{top:40.77%}37.5%{top:39.46%}43.75%{top:39.78%}50%{top:38.92%}56.25%{top:39.98%}62.5%{top:41.15%}68.75%{top:42.46%}75%{top:42.26%}81.25%{top:41.28%}87.5%{top:39.14%}93.75%{top:39.6%}}
 @media (prefers-reduced-motion:reduce){.stage,.stage *,.stage *::after{animation:none!important}}
 .hero-copy{position:relative;z-index:3;padding-top:48px;padding-bottom:40px}
 .eyebrow{margin:0 0 14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:14px;color:var(--accent)}

@@ -26,7 +26,7 @@ export function HeroScene() {
         <div className="lamp" />
         <Strip cls="waves near" src="waves.webp" />
         <img className="full" src={H + "fore.webp"} alt="" />
-        <div className="pirate">{[0, 1, 2, 3].map((i) => <span key={i} />)}</div>
+        <div className="pirate" />
         <div className="lantern" />
       </div>
     </div>
