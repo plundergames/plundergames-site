@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { HeroScene } from "@/components/HeroScene";
 import { GAMES } from "@/lib/site";
 
 export default function Home() {
   return (
     <>
       <section className="scene">
+        <HeroScene />
         <Header />
         <div className="container hero-copy">
           <p className="eyebrow">Mobile games for landlubbers</p>

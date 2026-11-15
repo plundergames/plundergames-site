@@ -19,13 +19,41 @@ h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:800;color:#ff
 .site-footer .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:28px;padding-bottom:28px;font-weight:700;font-size:15px;color:var(--muted)}
 .site-footer nav{display:flex;flex-wrap:wrap;gap:20px}
 
-/* hero scene: the painting is anchored right (pirate, ship, lighthouse); the left stays calm for the copy */
-.scene{position:relative;min-height:clamp(600px,56vw,820px);overflow:hidden;background:
-linear-gradient(90deg,rgba(11,20,48,.8) 0%,rgba(11,20,48,.35) 38%,rgba(11,20,48,0) 60%),
-linear-gradient(rgba(11,20,48,0) 72%,var(--bg)),
-url(/art/hero.webp) 72% 100%/cover no-repeat,var(--bg)}
+/* hero scene: painted layers on a 16:9 stage that covers the section like background-size:cover, anchored at 72 % (pirate, ship, lighthouse); positions are measured on the original painting */
+.scene{position:relative;min-height:clamp(600px,56vw,820px);overflow:hidden;background:var(--bg)}
+.scene::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(11,20,48,.8) 0%,rgba(11,20,48,.35) 38%,rgba(11,20,48,0) 60%),linear-gradient(rgba(11,20,48,0) 72%,var(--bg))}
 /* narrow screens: the copy sits on the busy part of the painting, so darken it evenly */
-@media (max-width:700px){.scene{background:linear-gradient(rgba(11,20,48,.6),rgba(11,20,48,.6)),linear-gradient(rgba(11,20,48,0) 72%,var(--bg)),url(/art/hero.webp) 72% 100%/cover no-repeat,var(--bg)}}
+@media (max-width:700px){.scene::after{background:linear-gradient(rgba(11,20,48,.6),rgba(11,20,48,.6)),linear-gradient(rgba(11,20,48,0) 72%,var(--bg))}}
+.stage-box{position:absolute;inset:0;container-type:size}
+.stage{--w:max(100cqw,calc(100cqh * 16 / 9));position:absolute;bottom:0;left:calc((100cqw - var(--w)) * .72);width:var(--w);aspect-ratio:16/9;overflow:hidden}
+.stage>*{position:absolute}
+.stage .full{inset:0;width:100%;height:100%}
+.stars,.stars::after{inset:0 0 50% 0;background:radial-gradient(circle at 8% 22%,#fff 0 1.5px,transparent 2.5px),radial-gradient(circle at 23% 9%,#fff 0 1px,transparent 2px),radial-gradient(circle at 37% 30%,#fff 0 1.5px,transparent 2.5px),radial-gradient(circle at 52% 14%,#fff 0 1px,transparent 2px),radial-gradient(circle at 63% 36%,#fff 0 1.5px,transparent 2.5px),radial-gradient(circle at 86% 30%,#fff 0 1px,transparent 2px);animation:twinkle 4s ease-in-out infinite}
+.stars::after{content:"";position:absolute;inset:0;transform:translate(9%,14%);animation-delay:-2s}
+.moon-glow{left:76.8%;top:10.3%;width:22%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(225,232,255,.6) 0,rgba(160,180,255,.22) 28%,transparent 64%);animation:glow 6s ease-in-out infinite}
+.moon{left:73.33%;top:4.14%;width:6.94%;filter:drop-shadow(0 0 14px rgba(230,235,255,.85))}
+.strip{display:flex;left:0;width:max-content;animation:scroll linear infinite}
+.strip img{display:block;flex:none;height:100%;width:auto;max-width:none}
+.clouds{top:-1%;height:20%;opacity:.6;animation-duration:260s}
+.waves{mix-blend-mode:screen}
+.waves.far{top:60.5%;height:8%;opacity:.5;animation-duration:110s}
+.waves.near{top:68%;height:14%;opacity:.7;animation-duration:70s;animation-direction:reverse}
+.ship{left:41.2%;top:29.5%;width:23.1%;transform-origin:50% 90%;animation:bob 7s ease-in-out infinite}
+.ship img{display:block;width:100%}
+.beam{left:91.9%;top:9.4%;width:55%;height:18%;translate:-100% -50%;transform-origin:100% 50%;background:linear-gradient(270deg,rgba(255,236,190,.6),rgba(255,236,190,0) 85%);clip-path:polygon(100% 45%,100% 55%,0 0,0 100%);mix-blend-mode:screen;animation:sweep 11s ease-in-out infinite}
+.lamp,.lantern{translate:-50% -50%;aspect-ratio:1;border-radius:50%;mix-blend-mode:screen;animation:flicker 2.6s ease-in-out infinite}
+.lamp{left:91.9%;top:9.4%;width:8%;background:radial-gradient(circle,rgba(255,224,160,.95),rgba(255,178,77,.35) 35%,transparent 70%)}
+.lantern{left:67.9%;top:36.2%;width:12%;background:radial-gradient(circle,rgba(120,255,225,.5),rgba(95,224,192,.15) 40%,transparent 70%);animation-duration:1.9s}
+/* the pirate is a 4-frame sprite sheet (frames aligned on the standing boot) */
+.pirate{left:63.9%;top:24.2%;width:23.5%;aspect-ratio:463/677;background:url(/art/hero/pirate.webp) 0 0/400% 100% no-repeat;animation:idle 2.4s steps(4) infinite}
+@keyframes scroll{to{translate:-25% 0}}
+@keyframes twinkle{50%{opacity:.35}}
+@keyframes glow{50%{opacity:.65;scale:.92}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(1.5%) rotate(1.2deg)}}
+@keyframes sweep{0%,100%{transform:rotate(-12deg);opacity:.45}50%{transform:rotate(14deg);opacity:1}}
+@keyframes flicker{0%,100%{opacity:1}20%{opacity:.8}45%{opacity:.95}70%{opacity:.72}}
+@keyframes idle{to{background-position:133.333% 0}}
+@media (prefers-reduced-motion:reduce){.stage,.stage *,.stage *::after{animation:none!important}}
 .hero-copy{position:relative;z-index:3;padding-top:48px;padding-bottom:40px}
 .eyebrow{margin:0 0 14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:14px;color:var(--accent)}
 .hero-copy h1{max-width:12ch;font-size:clamp(46px,8vw,88px);line-height:1;text-shadow:0 4px 40px rgba(5,10,40,.8)}

@@ -25,7 +25,7 @@ The style image only sets the look; what is painted comes from the prompt.
 
 | File | Subject (prompt core) |
 |---|---|
-| `hero.webp` | 16:9 pirate harbor at night; left 45 % calm sky/sea for the headline; right: moon, lighthouse, crooked town, anchored pirate ship, pirate with teal lantern and treasure chest on a jetty |
+| `hero/*.webp` | layered, animated hero (below) |
 | `band.webp` | 4:1 harbor skyline from the water, mostly dark, for the inner-page header |
 | `card-lootbeard.webp` | 4:5 red-bearded pirate captain on the bow with a heap of loot; bottom third dark sea for text |
 | `card-grim-swordsman.webp` | 4:5 weary swordsman from behind facing a gothic castle, nervous skeleton with lantern behind a gravestone; bottom third dark |
@@ -33,3 +33,20 @@ The style image only sets the look; what is painted comes from the prompt.
 | `flag.webp` | jolly-roger flag on a short pole (section icon) |
 | `btn-amber.webp` / `btn-blue.webp` | blank 4:1 pill buttons: amber-brass (primary) and cobalt enamel with brass rim (nav) |
 | `ribbon-warm.webp` / `ribbon-cool.webp` | blank swallowtail ribbons for card badges |
+
+## Hero layers (`public/art/hero/`, `components/HeroScene.tsx`)
+
+The hero is one painting split into layers so parts can move. First a complete 16:9 scene was generated (pirate harbor at night: left 45 % calm sky/sea for the headline; right: moon, lighthouse on a cliff, crooked town and pier, anchored pirate ship, pirate with a teal lantern on a jetty with a treasure chest). Each layer was then generated **with that scene attached as the first reference image** (style image second), asking to keep only one part, so the layers line up:
+
+| Layer | Prompt core | Motion (globals.css) |
+|---|---|---|
+| `sky.webp` | background plate: only sky and sea, everything else removed, soft glow where the moon was; opaque | – (stars on top twinkle) |
+| `moon.webp` | the moon disc alone, no halo | glow pulses behind it |
+| `clouds.webp` | wide strip of separate cloud banks, empty left/right edges so it tiles | drifts left |
+| `ship.webp` | the ship alone, hull painted below the waterline | bobs and rocks |
+| `waves.webp` | wide strip of wave crests/glints, empty edges | two copies scroll at different speeds, blended with `screen` |
+| `land.webp` | cliff, lighthouse, town, pier in the same framing, hidden parts painted in | lamp flickers, CSS beam sweeps |
+| `fore.webp` | jetty, bollard, rope, chest in the same framing, pirate removed | – |
+| `pirate.webp` | **4-frame sprite sheet** of a subtle idle loop (lantern swings, bandana flutters, breathing), same pose as the scene | `steps(4)`; teal lantern glow flickers |
+
+Post-processing (sharp): frames of the sheet are re-aligned on the standing boot (the tool drifted them by up to 20 px) and cropped to their union box; sprite alpha below ~140 is cut and the rest stretched (the tool leaves a pale matte fringe); clouds/waves get a milder alpha curve. Positions in CSS are percentages measured on the original scene (moon centre 76.8 % / 10.3 %, lamp 91.9 % / 9.4 %, …). The stage keeps 16:9 and covers the section like `background-size: cover`, anchored at 72 %. Everything stops under `prefers-reduced-motion`.
