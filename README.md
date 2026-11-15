@@ -5,7 +5,7 @@ Studio site for Plunder Games (`plundergames.de`): Next.js 16, static export, de
 - `npm install` · `npm run dev` (local) · `npm run check` (types) · `npm run build` (writes `./out`)
 - **Add a game:** one entry in `lib/site.ts` (`GAMES`) gives it `/<slug>/` plus sitemap + footer links. Privacy pages: see "Legal texts".
 - `public/CNAME` (custom domain) and `public/.nojekyll` must stay; `public/app-ads.txt` goes in the root of the site.
-- **Open:** `app-ads.txt` (ironSource Ads + Unity Ads lines from the LevelPlay dashboard); images at release.
+- **Open:** `app-ads.txt` (ironSource Ads + Unity Ads lines from the LevelPlay dashboard).
 - DNS (netcup): `plundergames.de` A records → 185.199.108.153 / .109.153 / .110.153 / .111.153, `www` CNAME → `plundergames.github.io`; then "Enforce HTTPS" in Settings → Pages.
 
 ## Legal texts
@@ -14,5 +14,5 @@ Studio site for Plunder Games (`plundergames.de`): Next.js 16, static export, de
 - `content/drafts/website-privacy.en.md` = draft of the site's own privacy note (hosting logs); **not routed**, items marked `[CHECK]`.
 
 ## Look
-- Design "Moonlit Harbor" (from the Claude design canvas): hero scene is vector art in `components/art.tsx` (placeholder until generated scene art exists), animations in `app/globals.css` (switched off for reduced motion). Fonts via `next/font` (self-hosted at build time, no requests to Google). The page footer links to `/legal/` (per-game privacy + terms) and `/imprint/`.
-- Per game, `lib/site.ts` holds the card text, badge and art type.
+- Design "Moonlit Harbor" (from the Claude design canvas), painted in the Habit Streak "Lebendig" style: all art (hero, page band, game cards, logo/favicon, buttons, badge ribbons) is generated WebP in `public/art/`; how to regenerate it and the links to the style reference are in [ART.md](ART.md). Fonts via `next/font` (self-hosted at build time, no requests to Google). The page footer links to `/legal/` (per-game privacy + terms) and `/imprint/`.
+- Per game, `lib/site.ts` holds the card text and badge; the card art is `public/art/card-<slug>.webp`.

@@ -21,6 +21,7 @@ export default async function GamePage({ params }: Props) {
   if (!game) notFound();
   return (
     <PageShell>
+      <img className="game-art" src={`/art/card-${game.slug}.webp`} width={800} height={1000} alt="" />
       <h1>{game.name}</h1>
       <p>{game.blurb}</p>
       <p>{game.storeUrl ? <a href={game.storeUrl}>View in the store</a> : <strong>{game.badge}.</strong>}</p>

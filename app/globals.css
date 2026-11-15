@@ -1,68 +1,60 @@
-:root{--bg:#0E1132;--fg:#EDE9FF;--muted:#BDB6E8;--accent:#FFD9A0;--amber:#FFB24D}
+/* Painted art in public/art/ (style "Lebendig", see ART.md). Colours follow it: cobalt night, brass/amber accents. */
+:root{--bg:#0B1430;--fg:#EAF0FF;--muted:#B8C4EA;--accent:#FFD9A0;--amber:#FFB24D}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 var(--font-body),system-ui,sans-serif;font-weight:500}
 a{color:var(--accent)}a:hover{color:#fff}
+img{max-width:100%}
 h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:800;color:#fff;margin:0}
 .container{max-width:1120px;margin:0 auto;padding:0 24px}
 
 /* header + footer */
 .site-header{position:relative;z-index:3;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;max-width:1120px;margin:0 auto;padding:24px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display),Georgia,serif;font-weight:800;font-size:26px;color:#fff}
-.nav{display:flex;gap:12px;font-weight:800}
-.nav a{text-decoration:none;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25)}
-.site-footer{border-top:1px solid rgba(255,255,255,.15);background:#080A24;margin-top:0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--font-display),Georgia,serif;font-weight:800;font-size:26px;color:#fff;text-shadow:0 2px 12px rgba(0,0,20,.6)}
+.nav{display:flex;gap:6px;font-weight:800}
+/* Painted pill buttons: border-image keeps the rounded ends unstretched, only the middle grows with the text. */
+.nav a{text-decoration:none;color:#fff;padding:7px 2px 10px;border:solid transparent;border-width:0 18px;border-image:url(/art/btn-blue.webp) 0 85 fill / 0 18px stretch;text-shadow:0 1px 2px rgba(0,0,30,.7)}
+.nav a:hover{filter:brightness(1.12)}
+.site-footer{border-top:1px solid rgba(255,255,255,.15);background:#070C22;margin-top:0}
 .site-footer .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:28px;padding-bottom:28px;font-weight:700;font-size:15px;color:var(--muted)}
 .site-footer nav{display:flex;flex-wrap:wrap;gap:20px}
 
-/* hero scene */
-.scene{position:relative;min-height:940px;overflow:hidden;background:
-radial-gradient(circle at 78% 22%, rgba(245,240,255,.98) 0 4.5%, rgba(205,190,255,.5) 5.5% 12%, rgba(140,110,220,0) 36%),
-linear-gradient(#171340 0%, #2E2766 42%, #5C4E9C 66%, #1B2050 66.1%, #0E1132 100%)}
-.shafts{position:absolute;inset:0;background:conic-gradient(from 195deg at 78% 22%, transparent 0 8deg, rgba(255,255,255,.07) 8deg 12deg, transparent 12deg 20deg, rgba(255,255,255,.05) 20deg 25deg, transparent 25deg 34deg, rgba(255,255,255,.06) 34deg 38deg, transparent 38deg)}
-.scene-svg{position:absolute;inset:0;width:100%;height:100%}
+/* hero scene: the painting is anchored right (pirate, ship, lighthouse); the left stays calm for the copy */
+.scene{position:relative;min-height:clamp(600px,56vw,820px);overflow:hidden;background:
+linear-gradient(90deg,rgba(11,20,48,.8) 0%,rgba(11,20,48,.35) 38%,rgba(11,20,48,0) 60%),
+linear-gradient(rgba(11,20,48,0) 72%,var(--bg)),
+url(/art/hero.webp) 72% 100%/cover no-repeat,var(--bg)}
+/* narrow screens: the copy sits on the busy part of the painting, so darken it evenly */
+@media (max-width:700px){.scene{background:linear-gradient(rgba(11,20,48,.6),rgba(11,20,48,.6)),linear-gradient(rgba(11,20,48,0) 72%,var(--bg)),url(/art/hero.webp) 72% 100%/cover no-repeat,var(--bg)}}
 .hero-copy{position:relative;z-index:3;padding-top:48px;padding-bottom:40px}
 .eyebrow{margin:0 0 14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:14px;color:var(--accent)}
-.hero-copy h1{max-width:12ch;font-size:clamp(46px,8vw,88px);line-height:1;text-shadow:0 4px 40px rgba(20,10,60,.7)}
-.hero-copy p.lead{margin:22px 0 28px;max-width:38ch;font-size:21px;line-height:1.5;font-weight:700;color:#DDD6FF}
-.btn{display:inline-block;padding:16px 34px;border-radius:16px;background:var(--amber);color:#2A1706;font-weight:800;font-size:19px;text-decoration:none;box-shadow:0 6px 0 #8A4F10,0 0 36px rgba(255,170,70,.55)}
-.btn:hover{color:#2A1706;filter:brightness(1.06)}
-.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #8A4F10}
-.btn.small{padding:12px 24px;border-radius:14px;font-size:17px}
+.hero-copy h1{max-width:12ch;font-size:clamp(46px,8vw,88px);line-height:1;text-shadow:0 4px 40px rgba(5,10,40,.8)}
+.hero-copy p.lead{margin:22px 0 28px;max-width:38ch;font-size:21px;line-height:1.5;font-weight:700;color:#DCE4FF;text-shadow:0 2px 16px rgba(5,10,40,.8)}
+.btn{display:inline-block;padding:16px 8px 20px;border:solid transparent;border-width:0 30px;border-image:url(/art/btn-amber.webp) 0 90 fill / 0 30px stretch;color:#2A1706;font-weight:800;font-size:19px;text-decoration:none;text-shadow:0 1px 0 rgba(255,235,190,.6);filter:drop-shadow(0 0 22px rgba(255,170,70,.45))}
+.btn:hover{color:#2A1706;filter:brightness(1.08) drop-shadow(0 0 26px rgba(255,170,70,.6))}
+.btn:active{transform:translateY(3px)}
+.btn.small{padding:12px 4px 16px;border-width:0 24px;border-image-width:0 24px;font-size:17px}
 
-/* game cards */
+/* game cards: painted card art, text on the dark bottom third */
 .section{padding-top:72px;padding-bottom:88px}
+.scene+.section{padding-top:16px}
 .section-head{display:flex;align-items:center;gap:16px;margin-bottom:32px}
 .section-head h2{font-size:40px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px}
-.card{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.2);min-height:500px;display:flex;flex-direction:column;justify-content:flex-end}
-.card.ship{background:radial-gradient(ellipse 50% 45% at 50% 75%, rgba(255,176,80,.85), transparent 70%),linear-gradient(#2A2262,#8A5A9A 70%,#3A2A6A)}
-.card.castle{background:radial-gradient(circle at 72% 26%, rgba(235,240,255,.95) 0 6%, rgba(150,170,255,.35) 7% 22%, transparent 40%),linear-gradient(#10163F,#1F2B66 62%,#0E1132)}
-.art-ship{position:absolute;left:0;right:0;top:40px;width:100%;height:280px}
-.art-castle{position:absolute;left:0;right:0;top:60px;width:100%;height:260px}
-.card .water{position:absolute;left:0;right:0;top:258px;bottom:0;background:repeating-linear-gradient(180deg, rgba(255,255,255,.07) 0 2px, transparent 2px 22px),linear-gradient(#3A3180,#1A1650 40%,#0E1132);border-top:3px solid rgba(255,224,170,.55)}
-.badge{position:absolute;top:18px;right:18px;border-radius:999px;padding:5px 14px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
-.badge.warm{background:var(--amber);color:#2A1706}.badge.cool{background:#8FA2FF;color:#0E1132}
-.card-body{position:relative;padding:90px 28px 28px;background:linear-gradient(transparent, rgba(10,8,40,.94) 50%)}
+.card{position:relative;overflow:hidden;border-radius:24px;border:2px solid rgba(200,160,90,.55);min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;background:var(--bg) center top/cover no-repeat;box-shadow:0 16px 40px rgba(0,0,20,.45)}
+.badge{position:absolute;top:18px;right:14px;padding:6px 2px 10px;border:solid transparent;border-width:0 32px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+.badge.warm{border-image:url(/art/ribbon-warm.webp) 0 100 fill / 0 32px stretch;color:#3A1E05}
+.badge.cool{border-image:url(/art/ribbon-cool.webp) 0 100 fill / 0 32px stretch;color:#0B1430}
+.card-body{position:relative;padding:110px 28px 28px;background:linear-gradient(rgba(8,14,38,0),rgba(8,14,38,.92) 45%)}
 .card-body h3{font-size:40px;margin-bottom:8px}
-.card-body p{margin:0 0 18px;font-size:18px;line-height:1.5;font-weight:600;color:#E6E0FF}
+.card-body p{margin:0 0 18px;font-size:18px;line-height:1.5;font-weight:600;color:#E2E9FF}
 
 /* inner pages */
-.page-band{background:linear-gradient(#171340,#0E1132)}
-.page{padding-top:24px;padding-bottom:80px;max-width:760px}
+.page-band{min-height:clamp(200px,24vw,340px);background:linear-gradient(rgba(11,20,48,0) 45%,var(--bg)),url(/art/band.webp) 70% 55%/cover no-repeat,var(--bg)}
+.page{padding-top:8px;padding-bottom:80px;max-width:760px}
 .page h1{font-size:clamp(34px,6vw,48px);margin-bottom:16px}
+.game-art{float:right;width:min(42%,300px);height:auto;margin:0 0 16px 24px;border-radius:20px;border:2px solid rgba(200,160,90,.55)}
 article h1{font-size:clamp(30px,5vw,42px);margin-bottom:12px}
 article h2{font-size:26px;margin:36px 0 8px}
 article{overflow-wrap:anywhere}
 .linklist{padding-left:20px}
-
-/* motion */
-.ship-g{animation:bob 6s ease-in-out infinite}
-.beam{transform-origin:1122px 519px;animation:sweep 9s ease-in-out infinite}
-.flick{animation:flick 2.8s ease-in-out infinite}
-.star{animation:twinkle 4s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-@keyframes sweep{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
-@keyframes flick{0%,100%{opacity:1}50%{opacity:.7}}
-@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.35}}
-@media (prefers-reduced-motion:reduce){.ship-g,.beam,.flick,.star{animation:none}}
