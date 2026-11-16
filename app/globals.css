@@ -47,6 +47,8 @@ h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:800;color:#ff
 .lantern{left:68.8%;top:39%;width:12%;background:radial-gradient(circle,rgba(120,255,225,.5),rgba(95,224,192,.15) 40%,transparent 70%);animation:flicker 1.9s ease-in-out infinite,lantern 2.88s linear infinite}
 /* the pirate is the generated 4-pose sprite with 7 optical-flow in-betweens per pose pair (32 frames, 90 ms each) as an 8x4 grid; a new file name per sprite change avoids a cached stylesheet meeting a new image */
 .pirate{left:63.9%;top:24.2%;width:23.5%;aspect-ratio:463/677;background:url(/art/hero/pirate-gpt.webp) 0 0/800% 400% no-repeat;animation:pirate-col .72s steps(8) infinite,pirate-row 2.88s steps(4) infinite}
+/* AVIF is ~40 % smaller; kept in @supports so browsers without image-set type() keep the plain WebP above */
+@supports (background-image:image-set(url(/x.avif) type("image/avif"))){.pirate{background-image:image-set(url(/art/hero/pirate-gpt.avif) type("image/avif"),url(/art/hero/pirate-gpt.webp) type("image/webp"))}}
 @keyframes scroll{to{translate:-25% 0}}
 @keyframes twinkle{50%{opacity:.35}}
 @keyframes glow{50%{opacity:.65;scale:.92}}

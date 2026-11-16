@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: SITE.name, template: `%s – ${SITE.name}` },
   description: SITE.tagline,
+  // share preview image: app/opengraph-image.jpg + app/twitter-image.jpg (file convention, a still of the hero)
+  openGraph: { siteName: SITE.name, type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
