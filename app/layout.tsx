@@ -24,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span>© 2026 Plunder Games · Stuttgart</span>
             <nav aria-label="Legal">
               <Link href="/legal/">Legal</Link>
+              <Link href="/privacy/">Privacy</Link>
               <Link href="/imprint/">Imprint</Link>
             </nav>
           </div>

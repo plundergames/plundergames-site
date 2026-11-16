@@ -20,6 +20,7 @@ export default function Legal() {
             {hasDoc(g.slug, "terms") ? <Link href={`/${g.slug}/terms/`}>Terms of Service</Link> : "Terms (coming)"}
           </li>
         ))}
+        <li><Link href="/privacy/">Privacy policy for this website</Link></li>
         <li><Link href="/imprint/">Imprint</Link></li>
       </ul>
     </PageShell>

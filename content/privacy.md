@@ -1,8 +1,6 @@
 # Privacy Policy for the website plundergames.de
 
-<!-- DRAFT, not published, not routed. Have it checked before publishing (see Docs/Legal/README.md in the game repo). Confirm the points marked [CHECK]. -->
-
-Last updated: {{DATE}}
+Last updated: 16 November 2026
 
 This policy covers the website **plundergames.de**. For the app **Lootbeard**, the [Privacy Policy of the app](https://plundergames.de/lootbeard/privacy) applies.
 
@@ -17,17 +15,17 @@ This website sets **no cookies**, loads **no external fonts, scripts or maps** a
 
 ## 3. Hosting and server logs
 
-The website is hosted on **GitHub Pages** (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; for the EEA: GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Netherlands). When you visit, GitHub processes technically necessary data, mainly your **IP address**, date and time, the page requested and browser details, to deliver the page and for security and operations. We have no access to these logs and do not evaluate any. [CHECK: current wording of GitHub's statements on Pages and on EU–US data transfers]
+The website is hosted on **GitHub Pages** (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; for the EEA: GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Netherlands). When you visit, GitHub processes technically necessary data, mainly your **IP address**, date and time, the page requested and browser details, to deliver the page and for security and operations. We have no access to these logs and do not evaluate any.
 
 **Legal basis:** legitimate interest in a secure, working website (Art. 6(1)(f) GDPR). Transfers to the USA rely on the safeguards GitHub names (standard contractual clauses or the EU–US Data Privacy Framework). More: [GitHub General Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
 
-## 4. Domain and DNS
+## 4. Domain, DNS and email hosting
 
-The domain is managed by **netcup GmbH** (Karlsruhe, Germany). DNS requests for plundergames.de are answered there; the IP addresses of the requesting DNS servers may be processed. We receive no personal evaluations from this.
+The domain and our mailbox are hosted by **netcup GmbH** (Daimlerstraße 25, 76185 Karlsruhe, Germany). DNS requests for plundergames.de are answered there; the IP addresses of the requesting DNS servers may be processed. We receive no personal evaluations from this.
 
 ## 5. Contact by email
 
-If you email us, we process your details (sender, content) only to answer your request (Art. 6(1)(b) or (f) GDPR). Our mailbox runs on **Microsoft 365 / Exchange Online** (Microsoft Ireland Operations Limited, Dublin). [CHECK: data processing agreement with Microsoft accepted, EU data location] We delete requests once they are dealt with and no retention duty applies.
+If you email us, we process your details (sender, content) only to answer your request (Art. 6(1)(b) or (f) GDPR). Our mailbox is hosted by netcup (see section 4) as our processor. We delete requests once they are dealt with and no retention duty applies.
 
 ## 6. Your rights
 

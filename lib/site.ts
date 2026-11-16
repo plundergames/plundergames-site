@@ -20,7 +20,7 @@ export const GAMES: Game[] = [
     slug: "lootbeard",
     name: "Lootbeard",
     blurb:
-      "Pirate merge RPG. Merge loot, upgrade your crew, beat the bosses. Your pirates keep plundering while you do other things. Android first.",
+      "Pirate merge RPG. Merge loot, upgrade your crew, beat the bosses. Your pirates keep plundering while you do other things.",
     badge: "Almost in port",
     tone: "warm",
   },

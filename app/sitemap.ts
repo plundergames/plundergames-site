@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "/",
     "/imprint/",
+    "/privacy/",
     "/legal/",
     ...GAMES.map((g) => `/${g.slug}/`),
     ...gamesWith("privacy").map((g) => `/${g.slug}/privacy/`),
