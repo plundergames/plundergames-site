@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { HeroScene } from "@/components/HeroScene";
+import { Pic } from "@/components/Pic";
 import { GAMES } from "@/lib/site";
 
 export default function Home() {
@@ -19,12 +20,13 @@ export default function Home() {
 
       <section id="games" className="container section">
         <div className="section-head">
-          <img src="/art/flag.webp" width={56} height={55} alt="" />
+          <Pic src="/art/flag.webp" loading="lazy" width={56} height={55} alt="" />
           <h2>The fleet</h2>
         </div>
         <div className="cards">
           {GAMES.map((g) => (
-            <article key={g.slug} className="card" style={{ backgroundImage: `url(/art/card-${g.slug}.webp)` }}>
+            <article key={g.slug} className="card">
+              <Pic className="card-art" src={`/art/card-${g.slug}.webp`} loading="lazy" alt="" />
               <span className={`badge ${g.tone}`}>{g.badge}</span>
               <div className="card-body">
                 <h3>{g.name}</h3>

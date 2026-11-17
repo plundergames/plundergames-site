@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/Header";
+import { Pic } from "@/components/Pic";
 import { hasDoc } from "@/lib/legal";
 import { GAMES } from "@/lib/site";
 
@@ -21,7 +22,7 @@ export default async function GamePage({ params }: Props) {
   if (!game) notFound();
   return (
     <PageShell>
-      <img className="game-art" src={`/art/card-${game.slug}.webp`} width={800} height={1000} alt="" />
+      <Pic className="game-art" src={`/art/card-${game.slug}.webp`} width={800} height={1000} alt="" />
       <h1>{game.name}</h1>
       <p>{game.blurb}</p>
       <p>{game.storeUrl ? <a href={game.storeUrl}>View in the store</a> : <strong>{game.badge}.</strong>}</p>
