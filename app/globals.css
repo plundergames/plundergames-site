@@ -45,19 +45,16 @@ h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:800;color:#ff
 .beam{left:91.9%;top:9.4%;width:55%;height:18%;translate:-100% -50%;transform-origin:100% 50%;background:linear-gradient(270deg,rgba(255,236,190,.6),rgba(255,236,190,0) 85%);clip-path:polygon(100% 45%,100% 55%,0 0,0 100%);mix-blend-mode:screen;animation:sweep 11s ease-in-out infinite}
 .lamp,.lantern{translate:-50% -50%;aspect-ratio:1;border-radius:50%;mix-blend-mode:screen;animation:flicker 2.6s ease-in-out infinite}
 .lamp{left:91.9%;top:9.4%;width:8%;background:radial-gradient(circle,rgba(255,224,160,.95),rgba(255,178,77,.35) 35%,transparent 70%)}
-.lantern{left:68.8%;top:39%;width:12%;background:radial-gradient(circle,rgba(120,255,225,.5),rgba(95,224,192,.15) 40%,transparent 70%);animation:flicker 1.9s ease-in-out infinite,lantern 2.88s linear infinite}
-/* the pirate is the generated 4-pose sprite with 7 optical-flow in-betweens per pose pair (32 frames, 90 ms each) as an 8x4 grid; a new file name per sprite change avoids a cached stylesheet meeting a new image */
-.pirate{left:63.9%;top:24.2%;width:23.5%;aspect-ratio:463/677;background:url(/art/hero/pirate-gpt.webp) 0 0/800% 400% no-repeat;animation:pirate-col .72s steps(8) infinite,pirate-row 2.88s steps(4) infinite}
+.lantern{left:69.81%;top:38.36%;width:12%;background:radial-gradient(circle,rgba(120,255,225,.5),rgba(95,224,192,.15) 40%,transparent 70%);animation:flicker 1.9s ease-in-out infinite}
+/* the pirate is the first, plain website sprite (frame 1 of the first layered hero, white matte removed) with a very slight breathing motion, pivoting on the standing boot */
+.pirate{left:63.9%;top:24.2%;width:23.5%;aspect-ratio:463/677;background:url(/art/hero/pirate-first.webp) 0 0/100% 100% no-repeat;transform-origin:62% 98%;animation:breathe 5s ease-in-out infinite}
 @keyframes scroll{to{translate:-25% 0}}
 @keyframes twinkle{50%{opacity:.35}}
 @keyframes glow{50%{opacity:.65;scale:.92}}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(1.5%) rotate(1.2deg)}}
 @keyframes sweep{0%,100%{transform:rotate(-12deg);opacity:.45}50%{transform:rotate(14deg);opacity:1}}
 @keyframes flicker{0%,100%{opacity:1}20%{opacity:.8}45%{opacity:.95}70%{opacity:.72}}
-@keyframes pirate-col{to{background-position-x:114.286%}}
-@keyframes pirate-row{to{background-position-y:133.333%}}
-/* the lantern glow follows the lantern (centroid of its teal glass per GIF frame) */
-@keyframes lantern{0%,100%{left:69.81%;top:38.36%}3.125%{left:69.74%;top:38.32%}6.25%{left:69.64%;top:38.22%}9.375%{left:69.54%;top:38.11%}12.5%{left:69.46%;top:38.03%}15.625%{left:69.37%;top:38.00%}18.75%{left:69.31%;top:37.85%}21.875%{left:69.29%;top:37.78%}25%{left:69.23%;top:37.62%}28.125%{left:69.18%;top:37.75%}31.25%{left:69.13%;top:37.83%}34.375%{left:69.09%;top:37.97%}37.5%{left:69.02%;top:38.07%}40.625%{left:68.97%;top:38.18%}43.75%{left:68.88%;top:38.23%}46.875%{left:68.80%;top:38.31%}50%{left:68.74%;top:38.39%}53.125%{left:68.82%;top:38.43%}56.25%{left:68.87%;top:38.44%}59.375%{left:68.96%;top:38.50%}62.5%{left:69.00%;top:38.45%}65.625%{left:69.04%;top:38.42%}68.75%{left:69.07%;top:38.41%}71.875%{left:69.09%;top:38.36%}75%{left:69.12%;top:38.30%}78.125%{left:69.22%;top:38.35%}81.25%{left:69.29%;top:38.38%}84.375%{left:69.36%;top:38.33%}87.5%{left:69.46%;top:38.37%}90.625%{left:69.56%;top:38.39%}93.75%{left:69.62%;top:38.36%}96.875%{left:69.73%;top:38.38%}}
+@keyframes breathe{50%{transform:scale(1.004,1.012) rotate(.25deg)}}
 @media (prefers-reduced-motion:reduce){.stage,.stage *,.stage *::after{animation:none!important}}
 .hero-copy{position:relative;z-index:3;padding-top:48px;padding-bottom:40px}
 .eyebrow{margin:0 0 14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:14px;color:var(--accent)}
@@ -94,7 +91,7 @@ article{overflow-wrap:anywhere}
 .linklist{padding-left:20px}
 /* CSS images: AVIF twins (~half the size) in @supports, so browsers without image-set type() keep the plain WebP; last in the file so it beats the border-image shorthands (<img> uses components/Pic.tsx) */
 @supports (background-image:image-set(url(/x.avif) type("image/avif"))){
-.pirate{background-image:image-set(url(/art/hero/pirate-gpt.avif) type("image/avif"),url(/art/hero/pirate-gpt.webp) type("image/webp"))}
+.pirate{background-image:image-set(url(/art/hero/pirate-first.avif) type("image/avif"),url(/art/hero/pirate-first.webp) type("image/webp"))}
 .btn{border-image-source:image-set(url(/art/btn-amber.avif) type("image/avif"),url(/art/btn-amber.webp) type("image/webp"))}
 .nav a{border-image-source:image-set(url(/art/btn-blue.avif) type("image/avif"),url(/art/btn-blue.webp) type("image/webp"))}
 .badge.warm{border-image-source:image-set(url(/art/ribbon-warm.avif) type("image/avif"),url(/art/ribbon-warm.webp) type("image/webp"))}
