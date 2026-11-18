@@ -54,3 +54,7 @@ Post-processing (sharp): sprite alpha below ~140 is cut and the rest stretched (
 ## Share image
 
 `app/opengraph-image.jpg` and `app/twitter-image.jpg` (1200 × 630, Next.js file convention → `og:image` / `twitter:image`) are a headless-browser screenshot of the home page hero at 1200 × 630 with the nav, the button and everything below the hero hidden. Retake it when the hero or the headline changes.
+
+## Archive
+
+`art-source/hero-first-original.png` is the very first complete hero painting (full-resolution original of the 15 Nov 2026 generation, pirate harbor at night with the lantern pirate, ship, lighthouse and treasure chest). It is not part of the site build (outside `public/`). Everything in `public/art/hero/` was cut from or built on it.
